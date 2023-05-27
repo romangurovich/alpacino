@@ -1,10 +1,10 @@
-"""Model wrapper for serving flan-t5-small."""
+"""Model wrapper for serving alpacino30b."""
 
 import argparse
 import typing
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import LlamaForCausalLM, LlamaTokenizer
 
 _MODEL_NAME = "digitous/Alpacino30b"
 """The model's name on HuggingFace."""
@@ -18,8 +18,8 @@ class Model:
 
     def __init__(self):
         """Initialize the model."""
-        self._tokenizer = AutoTokenizer.from_pretrained(_MODEL_NAME)
-        self._model = AutoModelForCausalLM.from_pretrained(_MODEL_NAME).to(
+        self._tokenizer = LlamaTokenizer.from_pretrained(_MODEL_NAME)
+        self._model = LlamaForCausalLM.from_pretrained(_MODEL_NAME).to(
             _DEVICE
         )
 
